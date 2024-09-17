@@ -7,7 +7,6 @@ describe('LOGIN', () => {
       cy.visit(pageURL);
     });
   
-  
     it('Verifica que la inicie sesion se cargue correctamente', () => {
         cy.get('[data-test-id="simple-login-button"]').click();
         cy.get('[id="email"]').type(email);
