@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Project') {
             steps {
-                git 'https://github.com/PaulLandaeta/isc-system-web.git'
+                git branch:'qa', url: 'https://github.com/LushoCallapa/isc-system-web.git'
             }
         }
         stage('Install Dependencies') {
