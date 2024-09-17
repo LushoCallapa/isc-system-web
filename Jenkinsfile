@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Project') {
             steps {
-                git branch:'qa', url: 'https://github.com/LushoCallapa/isc-system-web.git'
+                git branch: 'qa', url: 'https://github.com/LushoCallapa/isc-system-web.git'
             }
         }
         stage('Install Dependencies') {
@@ -15,19 +15,19 @@ pipeline {
                 sh 'yarn install'
             }
         }
-        stage('Intall Cypress') {
+        stage('Install Cypress') {
             steps {
                 sh 'yarn add cypress --dev'
             }
         }
-        stage('Install Xvfb') {
+        stage('Install Xvfb and Dependencies') {
             steps {
-                sh 'apt-get update && apt-get install -y xvfb'
+                sh 'apt-get update && apt-get install -y xvfb libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 libx11-xcb1'
             }
         }
         stage('Run e2e Tests') {
             steps {
-                sh 'npx cypress run'
+                sh 'xvfb-run --auto-servernum -- npx cypress run'
             }
         }
     }
