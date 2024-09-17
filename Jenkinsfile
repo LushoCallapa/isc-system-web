@@ -20,5 +20,10 @@ pipeline {
                 sh 'yarn add cypress --dev'
             }
         }
+        stage('Intall Run e2e') {
+            steps {
+                sh 'npx cypress run'
+            }
+        }
     }
 }
