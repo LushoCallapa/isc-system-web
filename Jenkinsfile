@@ -20,7 +20,12 @@ pipeline {
                 sh 'yarn add cypress --dev'
             }
         }
-        stage('Intall Run e2e') {
+        stage('Install Xvfb') {
+            steps {
+                sh 'apt-get update && apt-get install -y xvfb'
+            }
+        }
+        stage('Run e2e Tests') {
             steps {
                 sh 'npx cypress run'
             }
